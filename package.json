@@ -14,8 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm version patch",
-      "post-checkout": "npm version minor"
+      
     }
   }
 }
