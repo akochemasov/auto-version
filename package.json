@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "ls -la",
-    "version-minor": "git pull origin master && bump --minor --tag --all",
+    "version-major": "git pull origin master && bump --major --push --tag --all",
+    "version-minor": "git pull origin master && bump --minor --push --tag --all",
     "version-path": "git pull origin master && bump --patch --tag --all",
     "show-version-local": "git tag",
     "show-version-origin": "git ls-remote --tags"
