@@ -1,0 +1,36 @@
+#!/bin/bash
+# how use: bash .version {major|minor|path}
+
+git fetch --tag
+
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+echo "current last version: $latestTag"
+
+# parsing v1.11.0 -> [1, 11, 0]
+IFS='.' read -r -a arrayLatestTag <<< "${latestTag:1}"
+majorVersion=${arrayLatestTag[0]}
+minorVersion=${arrayLatestTag[1]}
+pathVersion=${arrayLatestTag[2]}
+
+typeSemver=$1
+if [ $typeSemver = "major" ]
+then
+nextVersion="$(($majorVersion + 1)).$minorVersion.$pathVersion"
+elif [ $typeSemver = "minor" ]
+then
+nextVersion=$majorVersion."$(($minorVersion + 1)).$pathVersion"
+elif [ $typeSemver = "path" ]
+then
+nextVersion=$majorVersion.$minorVersion."$(($pathVersion + 1))"
+else
+nextVersion=""
+fi
+
+if [ -n "${nextVersion}" ]
+then
+  echo "next version: $nextVersion"
+  npm version $nextVersion
+  git push --tags
+else
+  echo "no selected type semver"  
+fi
