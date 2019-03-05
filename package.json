@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "ls -la"
+    "lint": "ls -la",
+    "version-major": "bash .version majaor",
+    "version-minor": "bash .version minor",
+    "version-path": "bash .version path",
+    "get-last-version": "git fetch --tags && git describe --tags `git rev-list --tags --max-count=1`",
+    "show-versions-local": "git tag",
+    "show-versions-origin": "git ls-remote --tags"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "husky": "^1.3.1"
+    "husky": "^1.3.1",
+    "version-bump-prompt": "^4.3.0"
   },
   "husky": {
-    "hooks": {
-      
-    }
+    "hooks": {}
   }
 }
