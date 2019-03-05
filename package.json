@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "ls -la",
-    "version-major": "bash .version majaor",
+    "version-major": "bash .version major",
     "version-minor": "bash .version minor",
     "version-path": "bash .version path",
     "get-last-version": "git fetch --tags && git describe --tags `git rev-list --tags --max-count=1`",
