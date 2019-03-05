@@ -6,6 +6,11 @@ git fetch --tag
 latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 echo "current last version: $latestTag"
 
+if [ $latestTag = "origin" ]
+then
+latestTag='v1.0.0'
+fi
+
 # parsing v1.11.0 -> [1, 11, 0]
 IFS='.' read -r -a arrayLatestTag <<< "${latestTag:1}"
 majorVersion=${arrayLatestTag[0]}
