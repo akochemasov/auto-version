@@ -4,10 +4,10 @@ install:
 	npm install
 
 version-major:
-	npm run version major
+	npm version major
 
 version-minor:
-	npm run version minor
+	npm version minor
 
 version-patch:
-	npm run version patch
+	npm version patch
